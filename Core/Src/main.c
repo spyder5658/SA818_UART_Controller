@@ -116,19 +116,27 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-    // HAL_GPIO_WritePin(sa818.PTT_GPIO_Port, sa818.PTT_Pin, GPIO_PIN_SET);
 
   SA818_Init(&sa818);
   HAL_Delay(1000);
   if(SA818_Begin(&sa818))
   {
-    // HAL_GPIO_WritePin(sa818.PTT_GPIO_Port, sa818.PTT_Pin, GPIO_PIN_SET);
 
     printf("SA818 found..\n");
+    HAL_Delay(1000);
     SA818_SetPower(&sa818,1);
-    SA818_SetConfig(&sa818, 1, "436.0000", "436.0000", "0000", "0000", 2);
+    HAL_Delay(1000);
+
+    SA818_SetConfig(&sa818, 1, "430.0000", "430.0000", "0000", "0000", 2);
+    HAL_Delay(1000);
+
+    HAL_Delay(1000);
     SA818_SetVolume(&sa818,8);
+    HAL_Delay(1000);
+
     SA818_SetFilters(&sa818,0,0,0);
+    HAL_Delay(1000);
+
     // SA818_SetModeRX(&sa818);
     SA818_SetModeTX(&sa818);
 
